@@ -1,14 +1,31 @@
 const express = require("express");
 //const cookieParser = require("cookie-parser");
 const session = require("express-session");
+/* const redis = require("redis");
+const client = redis.createClient({
+  legacyMode: true,
+});
+client.connect();
+const RedisStore = require("connect-redis")(session); */
+const MongoStore = require("connect-mongo");
 
 const app = express();
 //app.use(cookieParser("el secreto"));
 app.use(
   session({
+    //store: new RedisStore({ host: "localhost", port: 6379, client, ttl: 300 }),
+    store: MongoStore.create({
+      mongoUrl:
+        "mongodb+srv://guillermofergnani:asdasd@cluster0.my1pzfu.mongodb.net/",
+      mongoOptions: {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      },
+    }),
+
     secret: "el secreto",
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 
