@@ -15,8 +15,7 @@ app.use(
   session({
     //store: new RedisStore({ host: "localhost", port: 6379, client, ttl: 300 }),
     store: MongoStore.create({
-      mongoUrl:
-        "mongodb+srv://guillermofergnani:asdasd@cluster0.my1pzfu.mongodb.net/",
+      mongoUrl: "mongodb+srv://user:pas@cluster0.my1pzfu.mongodb.net/",
       mongoOptions: {
         useNewUrlParser: true,
         useUnifiedTopology: true,
